@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KING OF DARKNESS HUB - Official Script</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0808;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: radial-gradient(circle at center, #1c1010 0%, #0b0808 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: #140e0e;
+            border: 2px solid #dc2323;
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(220, 35, 35, 0.3);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #201010 0%, #140e0e 100%);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #2a1616;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header h1 span {
+            color: #dc2323;
+        }
+
+        .header p {
+            color: #a0a0a0;
+            font-size: 13px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .code-box-wrapper {
+            position: relative;
+            background: #0d0909;
+            border: 1px solid #281414;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #181010;
+            border-bottom: 1px solid #281414;
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+
+        pre {
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #ff8080;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        /* Custom Scrollbar for Code */
+        pre::-webkit-scrollbar {
+            width: 6px;
+        }
+        pre::-webkit-scrollbar-thumb {
+            background: #dc2323;
+            border-radius: 3px;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background-color: #dc2323;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(220, 35, 35,.4);
+        }
+
+        .copy-btn:hover {
+            background-color: #ff2a2a;
+            box-shadow: 0 6px 20px rgba(220, 35, 35, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn.copied {
+            background-color: #28a745;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 11px;
+            color: #707070;
+            border-top: 1px solid #1a1010;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>KING OF <span>DARKNESS</span> HUB</h1>
+            <p>Full Tools & Ultimate Roblox Script</p>
+        </div>
+
+        <div class="content">
+            <div class="code-box-wrapper">
+                <div class="code-header">
+                    <span><i class="fa-solid fa-code"></i> Lua Script</span>
+                    <span>Roblox Universal</span>
+                </div>
+                <pre id="scriptContent">-- ==========================================
+--        KING OF DARKNESS HUB (FULL TOOLS)
+-- ==========================================
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+
+-- ------------------------------------------
+-- ระบบจัดการภาษาและธีม (Language & Theme System)
+-- ------------------------------------------
+local CurrentLang = "TH"
+local CurrentThemeColor = Color3.fromRGB(220, 35, 35)
+
+local Dictionary = {
+    TH = {
+        Title = "KING OF DARKNESS",
+        TabMain = "🚀   Main / ทั่วไป",
+        TabESP = "👀   ESP / มองทะลุ",
+        TabTools = "🛠️   Tools / เครื่องมือ",
+        TabSettings = "⚙️   Settings / ตั้งค่า",
+        FlyTitle = "Fly GUI V3",
+        FlySub = "เปิดใช้งานสคริปต์บิน",
+        SpeedTitle = "ความเร็ววิ่ง",
+        SpeedSub = "ปรับความเร็ว 1 ถึง 500",
+        InfJumpTitle = "กระโดดไม่จำกัด",
+        InfJumpSub = "Infinite Jump กระโดดกลางอากาศ",
+        NoclipTitle = "เดินทะลุกำแพง",
+        NoclipSub = "Noclip ทะลุสิ่งกีดขวาง",
+        InvisTitle = "ฟังก์ชั่นล่องหน",
+        InvisSub = "Invisible Man Script",
+        BtnEnable = "เปิดใช้งาน",
+        BtnGet = "รับไอเทม",
+        BtnOn = "เปิดอยู่",
+        BtnOff = "ปิดอยู่"
+    },
+    EN = {
+        Title = "KING OF DARKNESS",
+        TabMain = "🚀   Main",
+        TabESP = "👀   ESP System",
+        TabTools = "🛠️   Tools",
+        TabSettings = "⚙️   Settings",
+        FlyTitle = "Fly GUI V3",
+        FlySub = "Enable Flying Script",
+        SpeedTitle = "WalkSpeed",
+        SpeedSub = "Adjust Speed (1 to 500)",
+        InfJumpTitle = "Infinite Jump",
+        InfJumpSub = "Jump continuously in mid-air",
+        NoclipTitle = "Noclip",
+        NoclipSub = "Pass through solid walls",
+        InvisTitle = "Invisibility",
+        InvisSub = "Invisible Man Script",
+        BtnEnable = "Enable",
+        BtnGet = "Get Tool",
+        BtnOn = "ENABLED",
+        BtnDisabled = "DISABLED"
+    }
+}
+
+-- 1. สร้าง GUI หลัก
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "KingOfDarkness_UI"
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+print("KING OF DARKNESS HUB Loaded Successfully!")</pre>
+            </div>
+
+            <button class="copy-btn" id="copyBtn" onclick="copyScript()">
+                <i class="fa-regular fa-copy"></i> คัดลอกสคริปต์ (Copy Script)
+            </button>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 KING OF DARKNESS HUB. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        function copyScript() {
+            const scriptText = document.getElementById("scriptContent").innerText;
+            const copyBtn = document.getElementById("copyBtn");
+
+            navigator.clipboard.writeText(scriptText).then(() => {
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> คัดลอกสำเร็จ! (Copied)';
+                copyBtn.classList.add("copied");
+
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> คัดลอกสคริปต์ (Copy Script)';
+                    copyBtn.classList.remove("copied");
+                }, 2500);
+            }).catch(err => {
+                alert("ไม่สามารถคัดลอกได้ กรุณาลองใหม่อีกครั้ง");
+            });
+        }
+    </script>
+</body>
+</html>
